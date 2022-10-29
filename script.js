@@ -13,9 +13,11 @@ will create and put into an array, using a for loop
 
 
 const body = document.body;
-const container = document.createElement("div");
+const container = document.getElementById("container");
+const gridContainer = document.createElement("div");
 const containerStyle = container.style;
-container.classList.add("container");
+gridContainer.classList.add("grid-container");
+const clearButton = document.getElementById("clear");
 
 // array to store my grid pieces
 const grid = [];
@@ -24,7 +26,7 @@ for(i = 0; i < 256; i++) {
   let gridPiece = document.createElement("div");
   gridPiece.classList.add("gridPiece");
   gridPiece.setAttribute('id', `piece-${i}`);
-  container.appendChild(gridPiece);
+  gridContainer.appendChild(gridPiece);
   grid.push(gridPiece);
 }
 
@@ -39,6 +41,15 @@ let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
+//clear function - make all backgrounds white
+function clear(){
+  grid.forEach(piece => {
+    piece.style.backgroundColor = "white";
+  })
+}
+clearButton.onclick = () => {
+  clear();
+  }
 
 grid.forEach(piece => {
   if(mouseDown){
@@ -55,4 +66,6 @@ grid.forEach(piece => {
   })
 })
 
-body.appendChild(container);
+
+
+body.appendChild(gridContainer);

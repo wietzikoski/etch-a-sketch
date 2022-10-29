@@ -14,8 +14,22 @@ h1 {
   text-align: center;
   color:ghostwhite;
 }
-
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.side-bar {
+  flex-basis: 20rem;
+  flex-grow: 1;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+}
 .container {
+  flex-basis: 0;
+  flex-grow: 999;
+}
+.grid-container {
   margin: 0 auto;
   width: 642px;
   box-sizing: border-box;
@@ -23,7 +37,8 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
 }
 .gridPiece {
   height: 40px;
