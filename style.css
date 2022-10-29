@@ -1,0 +1,36 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.head-container {
+  padding: 40px 0;
+  margin-bottom: 20px;
+  background-color:slategrey;
+}
+h1 {
+  margin: 0 auto;
+  font-size: 40px;
+  text-align: center;
+  color:ghostwhite;
+}
+
+.container {
+  margin: 0 auto;
+  width: 642px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  border: 1px solid gray;
+}
+.gridPiece {
+  height: 40px;
+  width: 40px;
+  margin: 0;
+  padding: 0;
+}
+.black {
+  background-color: black;
+}
