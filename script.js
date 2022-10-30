@@ -19,18 +19,56 @@ const containerStyle = container.style;
 gridContainer.classList.add("grid-container");
 const clearButton = document.getElementById("clear");
 
+let gridSize = document.getElementById('gridSize').value;
+
+
 // array to store my grid pieces
 const grid = [];
 
-for(i = 0; i < 256; i++) {
-  let gridPiece = document.createElement("div");
-  gridPiece.classList.add("gridPiece");
-  gridPiece.setAttribute('id', `piece-${i}`);
-  gridContainer.appendChild(gridPiece);
-  grid.push(gridPiece);
+// for(i = 0; i < 256; i++) {
+//   let gridPiece = document.createElement("div");
+//   gridPiece.classList.add("gridPiece");
+//   gridContainer.appendChild(gridPiece);
+//   grid.push(gridPiece);
+// }
+
+// make a grid
+
+// change anad show the grid size value
+function showVal(newVal){
+  gridSize=newVal;
+  console.log(gridSize);
+  return gridSize;
 }
 
+//make a new grid based on gridSize
+// width is 640, so we well need to adjust the size of each div based on that.
+function makeGrid(size) {
+  //clear();
+  gridContainer.innerHTML = "";
+  for(i = 0; i < size * size; i++){
+    let gridPiece = document.createElement("div");
+    gridPiece.classList.add("gridPiece");
+    gridPiece.style.height = 640/size + "px";
+    gridPiece.style.width = 640/size + "px";
+    gridContainer.appendChild(gridPiece);
+    grid.push(gridPiece);
+  }
+  grid.forEach(piece => {
+ 
+    piece.addEventListener('mouseenter', (event) => {
+      {
+        // if mouse is down 
+        if(mouseDown){
+          piece.style.backgroundColor = "black";
+        }    }
+      
+    })
+  })
+  container.appendChild(gridContainer);
+}
 
+makeGrid(16);
 // Set up a “hover” effect so that the grid divs change color when 
 // your mouse passes over them, leaving a (pixelated) trail through 
 // your grid like a pen would.
@@ -50,22 +88,3 @@ function clear(){
 clearButton.onclick = () => {
   clear();
   }
-
-grid.forEach(piece => {
-  if(mouseDown){
-    piece.style.backgroundColor === "black";
-  }
-  
-  piece.addEventListener('mouseenter', (event) => {
-    {
-      // if mouse is down 
-      if(mouseDown){
-        piece.style.backgroundColor = "black";
-      }    }
-    
-  })
-})
-
-
-
-body.appendChild(gridContainer);

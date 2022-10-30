@@ -1,50 +1,62 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: slategrey;
 }
 
 .head-container {
-  padding: 40px 0;
+  padding:  0 0 30px 0;
   margin-bottom: 20px;
   background-color:slategrey;
 }
 h1 {
   margin: 0 auto;
-  font-size: 40px;
+  font-size: 60px;
   text-align: center;
   color:ghostwhite;
+  font-family: 'Silkscreen', sans-serif;
 }
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
 }
 .side-bar {
   flex-basis: 20rem;
   flex-grow: 1;
-  background-color: green;
   display: flex;
   flex-direction: column;
+}
+.button {
+  width: 8rem;
+}
+.gridOutput {
+  font-size: 20px;
+  font-family: 'Silkscreen', sans-serif;
+  color: #fff;
 }
 .container {
   flex-basis: 0;
   flex-grow: 999;
+  padding: 30px;
 }
 .grid-container {
-  margin: 0 auto;
-  width: 642px;
+  margin-left: 60px;
+  margin-bottom: 50px;
+  width: 640px;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
-  /* border: 1px solid gray; */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
 }
 .gridPiece {
   height: 40px;
   width: 40px;
   margin: 0;
   padding: 0;
+  background-color: #fff;
 }
 .black {
   background-color: black;
