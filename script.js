@@ -55,7 +55,10 @@ function makeGrid(size) {
     grid.push(gridPiece);
   }
   grid.forEach(piece => {
- 
+    
+    piece.addEventListener('click', (event) => {
+      piece.style.backgroundColor = "black";
+    })
     piece.addEventListener('mouseenter', (event) => {
       {
         // if mouse is down 
