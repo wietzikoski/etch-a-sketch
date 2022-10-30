@@ -25,26 +25,41 @@ let gridSize = document.getElementById('gridSize').value;
 // array to store my grid pieces
 const grid = [];
 
-// for(i = 0; i < 256; i++) {
-//   let gridPiece = document.createElement("div");
-//   gridPiece.classList.add("gridPiece");
-//   gridContainer.appendChild(gridPiece);
-//   grid.push(gridPiece);
-// }
-
-// make a grid
 
 // change anad show the grid size value
 function showVal(newVal){
   gridSize=newVal;
-  console.log(gridSize);
   return gridSize;
 }
 
+const randomButton = document.getElementById("randomColor");
+randomButton.onclick = () => {
+  randomButton.classList.toggle('active');
+}
+function checkActive(button) {
+  if(button.classList.contains('active')){
+    return true;
+  } else{ 
+    return false;
+  }
+}
+
+// check if mouse is down
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+
+// create random color
+function randomNumber(){
+  return Math.floor(Math.random() * 256);
+
+  //'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
+}
 //make a new grid based on gridSize
 // width is 640, so we well need to adjust the size of each div based on that.
 function makeGrid(size) {
-  //clear();
+  //clear
   gridContainer.innerHTML = "";
   for(i = 0; i < size * size; i++){
     let gridPiece = document.createElement("div");
@@ -57,30 +72,34 @@ function makeGrid(size) {
   grid.forEach(piece => {
     
     piece.addEventListener('click', (event) => {
+      if (checkActive(randomButton)) {
+        piece.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
+      }
+      else
       piece.style.backgroundColor = "black";
     })
     piece.addEventListener('mouseenter', (event) => {
       {
         // if mouse is down 
         if(mouseDown){
+          if (checkActive(randomButton)) {
+            piece.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
+          } 
+          else
           piece.style.backgroundColor = "black";
-        }    }
-      
+        }    
+      }
     })
   })
   container.appendChild(gridContainer);
 }
 
+
+// set original grid as 16 x 16
 makeGrid(16);
 // Set up a “hover” effect so that the grid divs change color when 
 // your mouse passes over them, leaving a (pixelated) trail through 
 // your grid like a pen would.
-
-
-// check if mouse is down
-let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
 
 //clear function - make all backgrounds white
 function clear(){
